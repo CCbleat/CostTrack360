@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { View, Text } from 'tamagui';
-import TitleProductElement from './texts/TitleProductElement';
-import ProductElementChecker from './form/ProductElementChecker';
+import TitleProductElement from '../../texts/TitleProductElement';
+import ProductElementChecker from '../../form/ProductElementChecker';
 
 type ProductElementProps = {
   Checked: boolean;

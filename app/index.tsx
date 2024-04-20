@@ -2,8 +2,9 @@ import {
   StyleSheet,
   StatusBar,
 } from 'react-native';
+import { router } from 'expo-router';
 import { View, ScrollView } from 'tamagui';
-import ProductElement from '../src/components/ProductElement';
+import ProductElement from '../src/components/PagesComponents/HomePage/ProductElement';
 import PlusRoundedButton from '../src/components/buttons/PlusRoundedButton';
 import TopHeadingText from '../src/components/texts/TopHeadingText';
 
@@ -30,6 +31,11 @@ const products: ProductElementProps[] = [
   }
 ]
 
+const onPressPlusBtnAction = () => {
+  // Jump to addPage
+  router.push('/addPage');
+}
+
 export default function App() {
   return (
     <View style={styles.container}>
@@ -40,7 +46,7 @@ export default function App() {
           <ProductElement key={product.ProductTitle+index} {...product} />
         ))}
       </ScrollView>
-      <PlusRoundedButton />
+      <PlusRoundedButton onPressAction={onPressPlusBtnAction}/>
     </View>
   );
 }

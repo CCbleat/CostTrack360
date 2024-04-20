@@ -5,16 +5,24 @@ import TitleProductElement from '../../texts/TitleProductElement';
 import ProductElementChecker from '../../form/ProductElementChecker';
 
 type ProductElementProps = {
-  Checked: boolean;
+  // Checked: boolean;
   ProductTitle: string;
   CurrencySign: string;
   Cost: number[];
 }
 
-export default function ProductElement({Checked, ProductTitle, CurrencySign, Cost}: ProductElementProps) {
+export default function ProductElement({
+  // Checked, 
+  ProductTitle, CurrencySign, Cost, modifyNumSelectedProduct } : ProductElementProps & { modifyNumSelectedProduct: {
+    increment: () => void;
+    decrement: () => void;
+  }}) {
   return (
     <View style={styles.container}>
-      <ProductElementChecker Checked={Checked} />
+      <ProductElementChecker 
+        // Checked={Checked}
+        modifyNumSelectedProduct={modifyNumSelectedProduct}
+      />
       <View style={styles.productContainer}>
         <TitleProductElement>{ProductTitle}</TitleProductElement>
         <View style={styles.costsContainer}>

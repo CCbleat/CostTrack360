@@ -15,11 +15,16 @@ export default function RoundedButton({ icon, position, text, onPress} : Rounded
       circular
       icon={icon}
       onPress={onPress}
-      style={position}
+      style={[styles.buttonBasic, position]}
     >
       {text}
     </Button>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  buttonBasic: {
+    width: 40,
+    height: 40,
+  },
+})

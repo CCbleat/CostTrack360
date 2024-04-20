@@ -5,7 +5,7 @@ import {
 import { router } from 'expo-router';
 import { View, ScrollView } from 'tamagui';
 import ProductElement from '../src/components/PagesComponents/HomePage/ProductElement';
-import PlusRoundedButton from '../src/components/buttons/PlusRoundedButton';
+import PlusRoundedButton from '../src/components/buttons/roundedButtons/PlusRoundedButton';
 import TopHeadingText from '../src/components/texts/TopHeadingText';
 
 type ProductElementProps = {

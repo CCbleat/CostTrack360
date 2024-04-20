@@ -5,8 +5,8 @@ import {
 } from 'react-native';
 import { router } from 'expo-router';
 import { View, ScrollView } from 'tamagui';
-import PlusRoundedButton from '../src/components/buttons/PlusRoundedButton';
-import BackRoundedButton from '../src/components/buttons/BackRoundedButton';
+import PlusRoundedButton from '../src/components/buttons/roundedButtons/PlusRoundedButton';
+import BackRoundedButton from '../src/components/buttons/roundedButtons/BackRoundedButton';
 import TopHeadingText from '../src/components/texts/TopHeadingText';
 import AddNewProductLine from '../src/components/PagesComponents/AddPage/AddNewProductLine';
 

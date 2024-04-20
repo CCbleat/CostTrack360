@@ -8,6 +8,7 @@ import PlusRoundedButton from '../src/components/buttons/PlusRoundedButton';
 import TopHeadingText from '../src/components/texts/TopHeadingText';
 
 type ProductElementProps = {
+  Checked: boolean,
   ProductTitle: string
   CurrencySign: string
   Cost: number[]
@@ -16,14 +17,16 @@ type ProductElementProps = {
 // Mock data
 const products: ProductElementProps[] = [
   {
+    Checked: false,
     ProductTitle: '莱芬电动牙刷',
     CurrencySign: '¥',
-    Cost: [100, 200, 300]
+    Cost: [100, 200, 300],
   },
   {
+    Checked: false,
     ProductTitle: '小米电动牙刷T302',
     CurrencySign: '$',
-    Cost: [10, 20, 30]
+    Cost: [10, 20, 30],
   }
 ]
 

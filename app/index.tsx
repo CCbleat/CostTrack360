@@ -26,7 +26,7 @@ const products: ProductElementProps[] = [
     Checked: false,
     ProductTitle: '小米电动牙刷T302',
     CurrencySign: '$',
-    Cost: [10, 20, 30],
+    Cost: [100_000, 200_000, 300_000],
   }
 ]
 

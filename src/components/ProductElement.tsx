@@ -20,9 +20,9 @@ export default function ProductElement({Checked, ProductTitle, CurrencySign, Cos
         <View style={styles.costsContainer}>
           <Text style={styles.currencySign}>{CurrencySign}</Text>
           {/* three text elements, like 100元/1年, 100元/2年, 100元/3年 (Cost[i]元/i+1年}), each elements separated by space */}
-          {Cost.map((cost, index) => (
-            <Text key={cost + index} style={styles.costContentElement}>{cost}{CurrencySign}/{index + 1}年</Text>
-          ))}
+          <Text style={styles.costContentElement1}>{Cost[0]}{CurrencySign}/1年</Text>
+          <Text style={styles.costContentElement2}>{Cost[1]}{CurrencySign}/2年</Text>
+          <Text style={styles.costContentElement3}>{Cost[2]}{CurrencySign}/3年</Text>
         </View>
       </View>
     </View>
@@ -52,9 +52,21 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
   },
-  costContentElement: {
+  costContentElement1: {
+    color: '#666666',
+    fontSize: 12,
+    fontWeight: 'bold',
+    marginLeft: 8,
+  },
+  costContentElement2: {
     fontSize: 16,
     fontWeight: 'bold',
     marginLeft: 8,
-  }
+  },
+  costContentElement3: {
+    color: '#666666',
+    fontSize: 12,
+    fontWeight: 'bold',
+    marginLeft: 8,
+  },
 })

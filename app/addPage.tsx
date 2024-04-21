@@ -9,13 +9,15 @@ import PlusRoundedButton from '../src/components/buttons/roundedButtons/PlusRoun
 import BackRoundedButton from '../src/components/buttons/roundedButtons/BackRoundedButton';
 import TopHeadingText from '../src/components/texts/TopHeadingText';
 import AddNewProductInputLine from '../src/components/PagesComponents/AddPage/AddNewProductInputLine';
+import { addNewProduct } from '../src/tools/SecureStore';
 
-const onPressBackBtnAction = () => {
-    // Jump to homePage
-    router.push('/');
-}
-
-const onPressPlusBtnAction = () => {
+type newProduct = {
+    productName: string; // 产品名
+    currencySign: string; // 货币符号
+    unitConsumableTime: number; // 单位耗材可使用时间
+    unitConsumablePrice: number; // 单位耗材价格
+    estimatedProductTime: number; // 预计产品使用时间
+    broughtInConsumableNum: number; // 自带耗材数量
 }
 
 export default function addPage() {
@@ -25,6 +27,26 @@ export default function addPage() {
     const [unitConsumablePrice, setUnitConsumablePrice] = useState<number>(); // 单位耗材价格
     const [estimatedProductTime, setEstimatedProductTime] = useState<number>(); // 预计产品使用时间
     const [broughtInConsumableNum, setBroughtInConsumableNum] = useState<number>(); // 自带耗材数量
+    
+    const onPressBackBtnAction = () => {
+        // Jump to homePage
+        router.push('/');
+    }
+    
+    const onPressPlusBtnAction = () => {
+        const newProduct: newProduct = {
+            productName: productName,
+            currencySign: currencySign,
+            unitConsumableTime: unitConsumableTime,
+            unitConsumablePrice: unitConsumablePrice,
+            estimatedProductTime: estimatedProductTime,
+            broughtInConsumableNum: broughtInConsumableNum,
+        }
+        addNewProduct(newProduct);
+        onPressBackBtnAction();
+        console.log('New product added!');
+        console.log(newProduct);
+    }
 
     return (
         <View style={styles.container}>

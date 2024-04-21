@@ -8,10 +8,9 @@ type AddNewProductLineProps = {
     setLineState: any; // useState()[1]
 }
 
-export default function AddNewProductLine({lineKey} : AddNewProductLineProps) {
-    const [lineValue, setLineValue] = useState('');
+export default function AddNewProductLine({lineKey, lineState, setLineState} : AddNewProductLineProps) {
     const onLineValueChange = (value: string) => {
-        setLineValue(value);
+        setLineState(value);
     }
 
     return (
@@ -23,7 +22,7 @@ export default function AddNewProductLine({lineKey} : AddNewProductLineProps) {
                 <Input 
                     style={styles.inputValueText}
                     placeholder={lineKey}
-                    value={lineValue}
+                    value={lineState}
                     onChangeText={onLineValueChange}
                 />
             </View>

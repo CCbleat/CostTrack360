@@ -9,7 +9,7 @@ import ProductElement from '../src/components/PagesComponents/HomePage/ProductEl
 import PlusRoundedButton from '../src/components/buttons/roundedButtons/PlusRoundedButton';
 import CompareAndDelete from '../src/components/PagesComponents/ComparePage/CompareAndDelete';
 import TopHeadingText from '../src/components/texts/TopHeadingText';
-// import { addNewProduct, getAllProducts } from '../src/tools/SecureStore';
+import { getAllProducts, deleteAllProducts } from '../src/tools/SecureStore';
 
 type ProductElementProps = {
   // Checked: boolean,
@@ -42,6 +42,12 @@ const onPressPlusBtnAction = () => {
 export default function App() {
   // numSelectedProduct record the number of selected products (defined by useState)
   const [numSelectedProduct, setNumSelectedProduct] = useState(0);
+
+  // get all products
+  const getAllProductsFromStore = async () => {
+    const products = await getAllProducts();
+    console.log(products);
+  }
 
   const modifyNumSelectedProduct = {
     increment: () => {setNumSelectedProduct(numSelectedProduct + 1)},

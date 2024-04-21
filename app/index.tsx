@@ -9,6 +9,7 @@ import ProductElement from '../src/components/PagesComponents/HomePage/ProductEl
 import PlusRoundedButton from '../src/components/buttons/roundedButtons/PlusRoundedButton';
 import CompareAndDelete from '../src/components/PagesComponents/ComparePage/CompareAndDelete';
 import TopHeadingText from '../src/components/texts/TopHeadingText';
+// import { addNewProduct, getAllProducts } from '../src/tools/SecureStore';
 
 type ProductElementProps = {
   // Checked: boolean,

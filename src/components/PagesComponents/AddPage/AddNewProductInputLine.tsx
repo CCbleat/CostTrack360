@@ -3,7 +3,9 @@ import { StyleSheet } from 'react-native';
 import { View, Text, Input } from 'tamagui';
 
 type AddNewProductLineProps = {
-    lineKey: string,
+    lineKey: string;
+    lineState: any; // useState()[0]
+    setLineState: any; // useState()[1]
 }
 
 export default function AddNewProductLine({lineKey} : AddNewProductLineProps) {

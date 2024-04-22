@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { View, Text, Input } from 'tamagui';
-
-type AddNewProductLineProps = {
-    lineKey: string;
-    lineState: any; // useState()[0]
-    setLineState: any; // useState()[1]
-}
+import type { AddNewProductLineProps } from '../../../types/NewProductT';
 
 export default function AddNewProductLine({lineKey, lineState, setLineState} : AddNewProductLineProps) {
     const onLineValueChange = (value: string) => {

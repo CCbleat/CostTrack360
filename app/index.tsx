@@ -36,6 +36,7 @@ const onPressPlusBtnAction = () => {
 export default function App() {
   // numSelectedProduct record the number of selected products (defined by useState)
   const [numSelectedProduct, setNumSelectedProduct] = useState(0);
+  const [selectedProductsNameList, setSelectedProductsNameList] = useState<string[]>([]); // may be can replace numSelectedProduct by checking the length of selectedProductsName
   const [products, setProducts] = useState<ProductElementProps[]>([]);
 
   useEffect(() => {
@@ -80,10 +81,20 @@ export default function App() {
     });
   }, []);
 
-
+  // Define modifyNumSelectedProduct 
   const modifyNumSelectedProduct = {
-    increment: () => {setNumSelectedProduct(numSelectedProduct + 1)},
-    decrement: () => {setNumSelectedProduct(numSelectedProduct - 1)},
+    increment: () => {setNumSelectedProduct(numSelectedProduct + 1)}, // increment numSelectedProduct by 1
+    decrement: () => {setNumSelectedProduct(numSelectedProduct - 1)}, // decrement numSelectedProduct by 1
+  }
+  // Define modifySelectedProductsNameList
+  const modifySelectedProductsNameList = {
+    // add a product name to selectedProductsNameList (selected)
+    add: (productName: string) => {setSelectedProductsNameList([...selectedProductsNameList, productName])},
+    // remove a product name from selectedProductsNameList (unselected)
+    remove: (productName: string) => {
+      const newSelectedProductsNameList = selectedProductsNameList.filter((name) => name !== productName);
+      setSelectedProductsNameList(newSelectedProductsNameList);
+    },
   }
 
   return (
@@ -92,7 +103,12 @@ export default function App() {
       <ScrollView>
         {/* pass products to  ProductElements */}
         {products.map((product, index) => (
-          <ProductElement key={product.ProductTitle+index} {...product} modifyNumSelectedProduct={modifyNumSelectedProduct} />
+          <ProductElement 
+            key={product.ProductTitle+index} 
+            {...product} 
+            modifyNumSelectedProduct={modifyNumSelectedProduct} 
+            modifySelectedProductsNameList={modifySelectedProductsNameList}
+          />
         ))}
       </ScrollView>
       { numSelectedProduct === 0 ? 

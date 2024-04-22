@@ -13,15 +13,21 @@ type ProductElementProps = {
 
 export default function ProductElement({
   // Checked, 
-  ProductTitle, CurrencySign, Cost, modifyNumSelectedProduct } : ProductElementProps & { modifyNumSelectedProduct: {
+  ProductTitle, CurrencySign, Cost, modifyNumSelectedProduct, modifySelectedProductsNameList } : 
+  ProductElementProps & { modifyNumSelectedProduct: {
     increment: () => void;
     decrement: () => void;
+  }} & { modifySelectedProductsNameList: {
+    add: (productName: string) => void;
+    remove: (productName: string) => void;
   }}) {
   return (
     <View style={styles.container}>
       <ProductElementChecker 
         // Checked={Checked}
+        ProductTitle={ProductTitle}
         modifyNumSelectedProduct={modifyNumSelectedProduct}
+        modifySelectedProductsNameList={modifySelectedProductsNameList}
       />
       <View style={styles.productContainer}>
         <TitleProductElement>{ProductTitle}</TitleProductElement>

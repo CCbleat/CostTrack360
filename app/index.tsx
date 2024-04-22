@@ -6,10 +6,10 @@ import {
 import { router } from 'expo-router';
 import { View, ScrollView } from 'tamagui';
 import ProductElement from '../src/components/PagesComponents/HomePage/ProductElement';
-import PlusRoundedButton from '../src/components/buttons/roundedButtons/PlusRoundedButton';
-import CompareAndDelete from '../src/components/PagesComponents/ComparePage/CompareAndDelete';
+import { PlusRoundedButton } from '../src/components/buttons/roundedButtons/index';
+import { CompareEditDelete} from '../src/components/PagesComponents/ComparePage/CompareEditDelete';
 import TopHeadingText from '../src/components/texts/TopHeadingText';
-import { getAllProducts, deleteAllProducts } from '../src/tools/SecureStore';
+import { getAllProducts } from '../src/tools/SecureStore';
 import type { ProductElementProps, newProduct } from '../src/types/index';
 
 // Mock data
@@ -97,7 +97,7 @@ export default function App() {
       </ScrollView>
       { numSelectedProduct === 0 ? 
         <PlusRoundedButton onPressAction={onPressPlusBtnAction}/> :
-        <CompareAndDelete />
+        <CompareEditDelete />
       }
     </View>
   );

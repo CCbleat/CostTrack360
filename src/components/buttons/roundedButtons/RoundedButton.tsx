@@ -9,7 +9,7 @@ type RoundedButtonProps = {
   onPress: () => void;
 }
 
-export default function RoundedButton({ icon, position, text, onPress} : RoundedButtonProps) {
+export function RoundedButton({ icon, position, text, onPress} : RoundedButtonProps) {
   return (
     <Button
       circular

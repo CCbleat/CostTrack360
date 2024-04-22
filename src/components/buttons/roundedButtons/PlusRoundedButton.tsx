@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Plus } from '@tamagui/lucide-icons'
-import RoundedButton from './RoundedButton';
+import { RoundedButton } from './RoundedButton';
 
-export default function PlusRoundedButton({onPressAction} : {onPressAction: () => void}) {
+export function PlusRoundedButton({onPressAction} : {onPressAction: () => void}) {
   return (
     <RoundedButton
         position={styles.buttonPosition}

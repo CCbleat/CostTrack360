@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Button } from 'tamagui';
 
-export default function CompareButton({onPressAction} : {onPressAction: () => void}) {
+export function CompareButton({onPressAction} : {onPressAction: () => void}) {
   return (
     <Button
         style={[styles.buttonBasic, styles.buttonPosition]}
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     buttonPosition: {
         position: 'absolute',
         bottom: 20,
-        right: 72,
+        right: 20,
         height: 40,
     },
 })

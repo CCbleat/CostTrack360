@@ -1,4 +1,5 @@
 import * as SecureStore from 'expo-secure-store';
+import type { newProduct } from '../types/NewProductT';
 
 export async function save(key: string, value: string) {
   await SecureStore.setItemAsync(key, value);
@@ -6,15 +7,6 @@ export async function save(key: string, value: string) {
 
 export async function getValueFor(key: string) {
   return await SecureStore.getItemAsync(key);
-}
-
-type newProduct = {
-    productName: string; // 产品名
-    currencySign: string; // 货币符号
-    unitConsumableTime: number; // 单位耗材可使用时间
-    unitConsumablePrice: number; // 单位耗材价格
-    estimatedProductTime: number; // 预计产品使用时间
-    broughtInConsumableNum: number; // 自带耗材数量
 }
 
 // add a new product to an array, and then store to secure store

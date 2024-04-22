@@ -10,15 +10,7 @@ import BackRoundedButton from '../src/components/buttons/roundedButtons/BackRoun
 import TopHeadingText from '../src/components/texts/TopHeadingText';
 import AddNewProductInputLine from '../src/components/PagesComponents/AddPage/AddNewProductInputLine';
 import { addNewProduct } from '../src/tools/SecureStore';
-
-type newProduct = {
-    productName: string; // 产品名
-    currencySign: string; // 货币符号
-    unitConsumableTime: number; // 单位耗材可使用时间
-    unitConsumablePrice: number; // 单位耗材价格
-    estimatedProductTime: number; // 预计产品使用时间
-    broughtInConsumableNum: number; // 自带耗材数量
-}
+import type { newProduct } from '../src/types/NewProductT';
 
 export default function addPage() {
     const [productName, setProductName] = useState<string>(''); // 产品名

@@ -10,13 +10,7 @@ import PlusRoundedButton from '../src/components/buttons/roundedButtons/PlusRoun
 import CompareAndDelete from '../src/components/PagesComponents/ComparePage/CompareAndDelete';
 import TopHeadingText from '../src/components/texts/TopHeadingText';
 import { getAllProducts, deleteAllProducts } from '../src/tools/SecureStore';
-
-type ProductElementProps = {
-  // Checked: boolean,
-  ProductTitle: string;
-  CurrencySign: string;
-  Cost: number[];
-}
+import type { ProductElementProps } from '../src/types/DisplayProductT';
 
 // Mock data
 const products: ProductElementProps[] = [

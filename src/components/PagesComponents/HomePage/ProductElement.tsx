@@ -13,11 +13,15 @@ type ProductElementProps = {
 
 export default function ProductElement({
   // Checked, 
-  ProductTitle, CurrencySign, Cost, modifyNumSelectedProduct, modifySelectedProductsNameList } : 
-  ProductElementProps & { modifyNumSelectedProduct: {
-    increment: () => void;
-    decrement: () => void;
-  }} & { modifySelectedProductsNameList: {
+  ProductTitle, CurrencySign, Cost, 
+  // modifyNumSelectedProduct, 
+  modifySelectedProductsNameList } : 
+  ProductElementProps & 
+  // { modifyNumSelectedProduct: {
+  //   increment: () => void;
+  //   decrement: () => void;
+  // }} & 
+  { modifySelectedProductsNameList: {
     add: (productName: string) => void;
     remove: (productName: string) => void;
   }}) {
@@ -26,7 +30,7 @@ export default function ProductElement({
       <ProductElementChecker 
         // Checked={Checked}
         ProductTitle={ProductTitle}
-        modifyNumSelectedProduct={modifyNumSelectedProduct}
+        // modifyNumSelectedProduct={modifyNumSelectedProduct}
         modifySelectedProductsNameList={modifySelectedProductsNameList}
       />
       <View style={styles.productContainer}>

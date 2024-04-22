@@ -5,12 +5,16 @@ import { Checkbox } from 'tamagui';
 
 export default function ProductElementChecker(
   // {Checked: checked}: {Checked: boolean}
-  { ProductTitle, modifyNumSelectedProduct, modifySelectedProductsNameList } :
+  { ProductTitle, 
+    // modifyNumSelectedProduct, 
+    modifySelectedProductsNameList } :
   
-  { ProductTitle: string } & { modifyNumSelectedProduct : {
-    increment: () => void;
-    decrement: () => void;
-  }} & { modifySelectedProductsNameList: {
+  { ProductTitle: string } & 
+  // { modifyNumSelectedProduct : {
+  //   increment: () => void;
+  //   decrement: () => void;
+  // }} & 
+  { modifySelectedProductsNameList: {
     add: (productName: string) => void;
     remove: (productName: string) => void;
   }}
@@ -18,11 +22,11 @@ export default function ProductElementChecker(
 
   const onCheckedChange = (checked: boolean) => {
     // modify Num of selected product according to the checked status
-    if (checked) {
-      modifyNumSelectedProduct.increment();
-    } else {
-      modifyNumSelectedProduct.decrement();
-    }
+    // if (checked) {
+    //   modifyNumSelectedProduct.increment();
+    // } else {
+    //   modifyNumSelectedProduct.decrement();
+    // }
     // modify selected products name list according to the checked status
     if (checked) {
       modifySelectedProductsNameList.add(ProductTitle);

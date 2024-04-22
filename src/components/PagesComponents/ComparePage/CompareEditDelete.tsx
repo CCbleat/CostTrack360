@@ -2,12 +2,24 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { CompareButton } from '../../buttons/rectangularButtons/CompareButton';
 import { DeleteRoundedButton, EditRoundedButton } from '../../buttons/roundedButtons/index';
+import { deleteProduct } from '../../../tools/SecureStore';
 
-export function CompareEditDelete() {
+const deleteSelectedProducts = (selectedProductsNameList: string[]) => {
+  // delete selected products
+  selectedProductsNameList.forEach((productName) => {
+    deleteProduct(productName);
+  })
+}
+
+export function CompareEditDelete(
+  { selectedProductsNameList }: {selectedProductsNameList: string[]}
+) {
   return (
     <View>
         <EditRoundedButton onPressAction={() => {}} />
-        <DeleteRoundedButton onPressAction={() => {}} />
+        <DeleteRoundedButton onPressAction={() => {
+          deleteSelectedProducts(selectedProductsNameList);
+        }} />
         <CompareButton onPressAction={() => {}} />
     </View>
   )

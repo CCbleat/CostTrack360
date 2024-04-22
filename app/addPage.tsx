@@ -36,14 +36,7 @@ export default function addPage() {
             broughtInConsumableNum: broughtInConsumableNum,
         }
         addNewProduct(newProduct);
-        // Due to the asynchronous nature of the addNewProduct function, 
-        // the following code is executed after the addNewProduct function is executed
-        // Tackle the refresh issue
-        setTimeout(() => {
-            router.push('/');
-        }, 10);
-        console.log('New product added!');
-        console.log(newProduct);
+        router.push('/');
     }
 
     return (

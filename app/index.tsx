@@ -35,57 +35,47 @@ const onPressPlusBtnAction = () => {
 
 export default function App() {
   // numSelectedProduct record the number of selected products (defined by useState)
-  // const [numSelectedProduct, setNumSelectedProduct] = useState(0);
   const [selectedProductsNameList, setSelectedProductsNameList] = useState<string[]>([]); // may be can replace numSelectedProduct by checking the length of selectedProductsName
   const [products, setProducts] = useState<ProductElementProps[]>([]);
 
   useEffect(() => {
-    getAllProducts()
-    .then((elements) => {
-      const calculatedProducts = elements.map((element: newProduct) => {
-        const { productName: ProductTitle, currencySign: CurrencySign, 
-                productPrice, unitConsumableTime, unitConsumablePrice, broughtInConsumableNum } = element;
-        
-        const calculateCostOnYear = (year: number) => {
-          let cost = 0;
-          if (Number(broughtInConsumableNum) * Number(unitConsumableTime) >= 365 * year) {
-            cost = Number(productPrice);
-          } else {
-            const neededUnitConsumablePrice = 
-            (Math.floor((365 * year - Number(broughtInConsumableNum) * Number(unitConsumableTime)) / Number(unitConsumableTime)) + 1) * Number(unitConsumablePrice);
-            cost = Number(productPrice) + Number(neededUnitConsumablePrice);
-          }
-          return cost;
+    const elements = getAllProducts();
+    const calculatedProducts = elements.map((element: newProduct) => {
+      const { productName: ProductTitle, currencySign: CurrencySign, 
+              productPrice, unitConsumableTime, unitConsumablePrice, broughtInConsumableNum } = element;
+      
+      const calculateCostOnYear = (year: number) => {
+        let cost = 0;
+        if (Number(broughtInConsumableNum) * Number(unitConsumableTime) >= 365 * year) {
+          cost = Number(productPrice);
+        } else {
+          const neededUnitConsumablePrice = 
+          (Math.floor((365 * year - Number(broughtInConsumableNum) * Number(unitConsumableTime)) / Number(unitConsumableTime)) + 1) * Number(unitConsumablePrice);
+          cost = Number(productPrice) + Number(neededUnitConsumablePrice);
         }
+        return cost;
+      }
 
-        // Declare costFirstYear, costSecondYear, costThirdYear and initialize them 0
-        let costFirstYear = 0, costSecondYear = 0, costThirdYear = 0;
-        // Calculate costFirstYear
-        costFirstYear = calculateCostOnYear(1);
-        // Calculate costSecondYear
-        costSecondYear = calculateCostOnYear(2);   
-        // Calculate costThirdYear
-        costThirdYear = calculateCostOnYear(3);
+      // Declare costFirstYear, costSecondYear, costThirdYear and initialize them 0
+      let costFirstYear = 0, costSecondYear = 0, costThirdYear = 0;
+      // Calculate costFirstYear
+      costFirstYear = calculateCostOnYear(1);
+      // Calculate costSecondYear
+      costSecondYear = calculateCostOnYear(2);   
+      // Calculate costThirdYear
+      costThirdYear = calculateCostOnYear(3);
 
-        const Cost = [costFirstYear, costSecondYear, costThirdYear];
+      const Cost = [costFirstYear, costSecondYear, costThirdYear];
 
-        return {
-          ProductTitle,
-          CurrencySign,
-          Cost,
-        }
-      });
-      console.log(elements);
-      console.log(calculatedProducts);
-      setProducts(calculatedProducts);
+      return {
+        ProductTitle,
+        CurrencySign,
+        Cost,
+      }
     });
+    setProducts(calculatedProducts);
   }, []);
 
-  // Define modifyNumSelectedProduct 
-  // const modifyNumSelectedProduct = {
-  //   increment: () => {setNumSelectedProduct(numSelectedProduct + 1)}, // increment numSelectedProduct by 1
-  //   decrement: () => {setNumSelectedProduct(numSelectedProduct - 1)}, // decrement numSelectedProduct by 1
-  // }
   // Define modifySelectedProductsNameList
   const modifySelectedProductsNameList = {
     // add a product name to selectedProductsNameList (selected)
@@ -108,15 +98,14 @@ export default function App() {
           <ProductElement 
             key={product.ProductTitle+index} 
             {...product} 
-            // modifyNumSelectedProduct={modifyNumSelectedProduct} 
             modifySelectedProductsNameList={modifySelectedProductsNameList}
           />
         ))}
       </ScrollView>
-      { // numSelectedProduct === 0 ? 
+      { 
         selectedProductsNameList.length === 0 ? 
         <PlusRoundedButton onPressAction={onPressPlusBtnAction}/> :
-        <CompareEditDelete />
+        <CompareEditDelete selectedProductsNameList={selectedProductsNameList} />
       }
     </View>
   );

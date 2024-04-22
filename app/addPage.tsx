@@ -15,6 +15,7 @@ import type { newProduct } from '../src/types/NewProductT';
 export default function addPage() {
     const [productName, setProductName] = useState<string>(''); // 产品名
     const [currencySign, setCurrencySign] = useState<string>(''); // 货币符号
+    const [productPrice, setProductPrice] = useState<number>(); // 产品价格
     const [unitConsumableTime, setUnitConsumableTime] = useState<number>(); // 单位耗材可使用时间
     const [unitConsumablePrice, setUnitConsumablePrice] = useState<number>(); // 单位耗材价格
     const [estimatedProductTime, setEstimatedProductTime] = useState<number>(); // 预计产品使用时间
@@ -29,6 +30,7 @@ export default function addPage() {
         const newProduct: newProduct = {
             productName: productName,
             currencySign: currencySign,
+            productPrice: productPrice,
             unitConsumableTime: unitConsumableTime,
             unitConsumablePrice: unitConsumablePrice,
             estimatedProductTime: estimatedProductTime,
@@ -45,6 +47,7 @@ export default function addPage() {
             <TopHeadingText>添加新产品</TopHeadingText>
             <ScrollView>
                 <AddNewProductInputLine lineKey="产品名" lineState={productName} setLineState={setProductName}/>
+                <AddNewProductInputLine lineKey="产品价格" lineState={productPrice} setLineState={setProductPrice}/>
                 <AddNewProductInputLine lineKey="单位耗材可使用天数" lineState={unitConsumableTime} setLineState={setUnitConsumableTime}/>
                 <AddNewProductInputLine lineKey="单位耗材价格" lineState={unitConsumablePrice} setLineState={setUnitConsumablePrice}/>
                 <AddNewProductInputLine lineKey="预计使用时间" lineState={estimatedProductTime} setLineState={setEstimatedProductTime}/>

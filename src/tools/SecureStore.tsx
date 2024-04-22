@@ -19,7 +19,7 @@ export async function addNewProduct(newProduct: newProduct) {
 
 // get all stored products (in array form) from secure store
 // also use JSON.parse to parse the each item in the array
-export async function getAllProducts() {
+export async function getAllProducts() : Promise<newProduct[]>  {
   return JSON.parse(await SecureStore.getItemAsync('products')) || [];
 }
 

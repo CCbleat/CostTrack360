@@ -39,22 +39,57 @@ export default function AddEditPage({ isEditPage }: { isEditPage: boolean }) {
         router.push('/');
     }
 
+    const onPressSaveBtnAction = () => {
+        // Save the product
+    }
+
     return (
         <View style={styles.container}>
-            <TopHeadingText>添加新产品</TopHeadingText>
+            { isEditPage
+                ? <TopHeadingText>编辑产品</TopHeadingText>
+                : <TopHeadingText>添加新产品</TopHeadingText>
+            }
             <ScrollView>
-                <AddNewProductInputLine lineKey="产品名" lineState={productName} setLineState={setProductName}/>
-                <AddNewProductInputLine lineKey="产品价格" lineState={productPrice} setLineState={setProductPrice}/>
-                <AddNewProductInputLine lineKey="单位耗材可使用天数" lineState={unitConsumableTime} setLineState={setUnitConsumableTime}/>
-                <AddNewProductInputLine lineKey="单位耗材价格" lineState={unitConsumablePrice} setLineState={setUnitConsumablePrice}/>
-                <AddNewProductInputLine lineKey="预计使用时间" lineState={estimatedProductTime} setLineState={setEstimatedProductTime}/>
-                <AddNewProductInputLine lineKey="自带耗材数量" lineState={broughtInConsumableNum} setLineState={setBroughtInConsumableNum}/>
-                <AddNewProductInputLine lineKey="货币符号" lineState={currencySign} setLineState={setCurrencySign}/>
+                <AddNewProductInputLine
+                    lineKey="产品名"
+                    lineState={productName}
+                    setLineState={setProductName}
+                />
+                <AddNewProductInputLine
+                    lineKey="产品价格"
+                    lineState={productPrice}
+                    setLineState={setProductPrice}
+                />
+                <AddNewProductInputLine
+                    lineKey="单位耗材可使用天数"
+                    lineState={unitConsumableTime}
+                    setLineState={setUnitConsumableTime}
+                />
+                <AddNewProductInputLine
+                    lineKey="单位耗材价格"
+                    lineState={unitConsumablePrice}
+                    setLineState={setUnitConsumablePrice}
+                />
+                <AddNewProductInputLine
+                    lineKey="预计使用时间"
+                    lineState={estimatedProductTime}
+                    setLineState={setEstimatedProductTime}
+                />
+                <AddNewProductInputLine
+                    lineKey="自带耗材数量"
+                    lineState={broughtInConsumableNum}
+                    setLineState={setBroughtInConsumableNum}
+                />
+                <AddNewProductInputLine
+                    lineKey="货币符号"
+                    lineState={currencySign}
+                    setLineState={setCurrencySign}
+                />
             </ScrollView>
             <BackRoundedButton onPressAction={onPressBackBtnAction}/>
             { isEditPage 
-                ? <SaveRoundedButton onPressAction={() => {}} />
-                : <PlusRoundedButton  onPressAction={onPressPlusBtnAction}/>
+                ? <SaveRoundedButton onPressAction={onPressSaveBtnAction} />
+                : <PlusRoundedButton  onPressAction={onPressPlusBtnAction} />
             }
         </View>
     )

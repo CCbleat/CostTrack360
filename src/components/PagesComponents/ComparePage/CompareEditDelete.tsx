@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { CompareButton } from '../../buttons/rectangularButtons/CompareButton';
 import { DeleteRoundedButton, EditRoundedButton } from '../../buttons/roundedButtons/index';
 import { deleteProduct } from '../../../tools/SecureStore';
@@ -22,9 +22,12 @@ export function CompareEditDelete(
 ) {
   return (
     <View>
-        <EditRoundedButton onPressAction={() => {
-          onPressEditBtnAction();
-        }} />
+        { 
+          selectedProductsNameList.length === 1 
+          && <EditRoundedButton onPressAction={() => {
+            onPressEditBtnAction();
+          }} /> 
+        }
         <DeleteRoundedButton onPressAction={() => {
           deleteSelectedProducts(selectedProductsNameList);
         }} />
@@ -32,5 +35,3 @@ export function CompareEditDelete(
     </View>
   )
 }
-
-const styles = StyleSheet.create({})

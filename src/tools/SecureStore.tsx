@@ -30,7 +30,6 @@ export function deleteProduct(deletedProductName: string) {
   const newProducts = products.filter(
     (product: newProduct) => product.productName !== deletedProductName
   );
-  console.log(newProducts);
   SecureStore.setItem('products', JSON.stringify(newProducts));
 }
 

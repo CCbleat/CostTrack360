@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { router } from 'expo-router';
 import { View, ScrollView } from 'tamagui';
-import { PlusRoundedButton, BackRoundedButton, EditRoundedButton } from '../../buttons/roundedButtons';
+import { PlusRoundedButton, BackRoundedButton, SaveRoundedButton } from '../../buttons/roundedButtons';
 import TopHeadingText from '../../texts/TopHeadingText';
 import AddNewProductInputLine from '../../PagesComponents/AddEditPage/AddNewProductInputLine';
 import { addNewProduct } from '../../../tools/SecureStore';
@@ -53,7 +53,7 @@ export default function AddEditPage({ isEditPage }: { isEditPage: boolean }) {
             </ScrollView>
             <BackRoundedButton onPressAction={onPressBackBtnAction}/>
             { isEditPage 
-                ? <EditRoundedButton onPressAction={() => {}} />
+                ? <SaveRoundedButton onPressAction={() => {}} />
                 : <PlusRoundedButton  onPressAction={onPressPlusBtnAction}/>
             }
         </View>

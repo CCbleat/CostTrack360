@@ -3,6 +3,12 @@ import { StyleSheet, View } from 'react-native';
 import { CompareButton } from '../../buttons/rectangularButtons/CompareButton';
 import { DeleteRoundedButton, EditRoundedButton } from '../../buttons/roundedButtons/index';
 import { deleteProduct } from '../../../tools/SecureStore';
+import { router } from 'expo-router';
+
+const onPressEditBtnAction = () => {
+  // Jump to editPage
+  router.push('/editPage');
+}
 
 const deleteSelectedProducts = (selectedProductsNameList: string[]) => {
   // delete selected products
@@ -16,7 +22,9 @@ export function CompareEditDelete(
 ) {
   return (
     <View>
-        <EditRoundedButton onPressAction={() => {}} />
+        <EditRoundedButton onPressAction={() => {
+          onPressEditBtnAction();
+        }} />
         <DeleteRoundedButton onPressAction={() => {
           deleteSelectedProducts(selectedProductsNameList);
         }} />

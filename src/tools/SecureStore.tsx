@@ -38,3 +38,13 @@ export function deleteProduct(deletedProductName: string) {
 export function deleteAllProducts() {
   SecureStore.setItem('products', JSON.stringify([]));
 }
+
+// get the selected product name list from secure store
+export function getSelectedProductName() : string {
+  return JSON.parse( SecureStore.getItem('selectedProductName')) || "";
+}
+
+// store the selected product name list to secure store for later use
+export function storeSelectedProductName(selectedProductsName: string) {
+  SecureStore.setItem('selectedProductName', JSON.stringify(selectedProductsName));
+}

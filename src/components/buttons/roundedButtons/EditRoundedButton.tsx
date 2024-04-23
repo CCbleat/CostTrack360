@@ -3,7 +3,10 @@ import { StyleSheet } from 'react-native';
 import { Edit3 } from '@tamagui/lucide-icons'
 import { RoundedButton } from './RoundedButton';
 
-export function EditRoundedButton({onPressAction} : {onPressAction: () => void}) {
+export function EditRoundedButton (
+  { onPressAction } : 
+  { onPressAction: () => void }
+) {
   return (
     <RoundedButton
         position={styles.buttonPosition}

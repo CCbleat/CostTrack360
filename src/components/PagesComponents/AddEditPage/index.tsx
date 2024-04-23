@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
     StatusBar, 
     StyleSheet 
@@ -8,7 +8,7 @@ import { View, ScrollView } from 'tamagui';
 import { PlusRoundedButton, BackRoundedButton, SaveRoundedButton } from '../../buttons/roundedButtons';
 import TopHeadingText from '../../texts/TopHeadingText';
 import AddNewProductInputLine from '../../PagesComponents/AddEditPage/AddNewProductInputLine';
-import { addNewProduct } from '../../../tools/SecureStore';
+import { addNewProduct, getAllProducts, getSelectedProductName, storeSelectedProductName } from '../../../tools/SecureStore';
 import type { newProduct } from '../../../types/NewProductT';
 
 export default function AddEditPage({ isEditPage }: { isEditPage: boolean }) {
@@ -20,7 +20,15 @@ export default function AddEditPage({ isEditPage }: { isEditPage: boolean }) {
     const [estimatedProductTime, setEstimatedProductTime] = useState<number>(); // 预计产品使用时间
     const [broughtInConsumableNum, setBroughtInConsumableNum] = useState<number>(); // 自带耗材数量
     
+    const cleanSelectedProductName = () => {
+        storeSelectedProductName('');
+    }
+
     const onPressBackBtnAction = () => {
+        // If it is edit page, clean the selected product name
+        if ( isEditPage ) {
+            cleanSelectedProductName();
+        }
         // Jump to homePage
         router.push('/');
     }
@@ -38,10 +46,50 @@ export default function AddEditPage({ isEditPage }: { isEditPage: boolean }) {
         addNewProduct(newProduct);
         router.push('/');
     }
+    
+    const getSelectedProduct = (selectedProductName: string) : newProduct  => {
+        const products = getAllProducts();
+        const product = products.filter((product: newProduct) => product.productName === selectedProductName);
+        if (product.length === 1) {
+            return product[0];
+        }
+    }
 
     const onPressSaveBtnAction = () => {
         // Save the product
+        // Clean the selected product name
+        cleanSelectedProductName();
     }
+
+    const initializeProductProperties = () => {
+        if( isEditPage ) {
+            const selectedProductName = getSelectedProductName();
+            if (selectedProductName.length > 0) {
+                const {
+                    productName,
+                    currencySign,
+                    productPrice,
+                    unitConsumableTime,
+                    unitConsumablePrice,
+                    estimatedProductTime,
+                    broughtInConsumableNum
+                } = getSelectedProduct(selectedProductName);
+                // Get the product from secure store
+                // Set the product properties
+                setProductName( productName );
+                setCurrencySign( currencySign );
+                setProductPrice( productPrice );
+                setUnitConsumableTime( unitConsumableTime );
+                setUnitConsumablePrice( unitConsumablePrice );
+                setEstimatedProductTime( estimatedProductTime );
+                setBroughtInConsumableNum( broughtInConsumableNum );
+            }
+        }
+    }
+
+    useEffect(() => {
+        initializeProductProperties();
+    }, []);
 
     return (
         <View style={styles.container}>
@@ -88,8 +136,8 @@ export default function AddEditPage({ isEditPage }: { isEditPage: boolean }) {
             </ScrollView>
             <BackRoundedButton onPressAction={onPressBackBtnAction}/>
             { isEditPage 
-                ? <SaveRoundedButton onPressAction={onPressSaveBtnAction} />
-                : <PlusRoundedButton  onPressAction={onPressPlusBtnAction} />
+                ? <SaveRoundedButton onPressAction={ onPressSaveBtnAction } />
+                : <PlusRoundedButton  onPressAction={ onPressPlusBtnAction } />
             }
         </View>
     )

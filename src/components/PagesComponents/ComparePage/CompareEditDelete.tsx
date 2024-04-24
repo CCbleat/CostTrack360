@@ -11,6 +11,8 @@ const onPressDeleteBtnAction = (selectedProductsNameList: string[]) => {
   selectedProductsNameList.forEach((productName) => {
     deleteProduct(productName);
   })
+  // refresh the page
+  router.push('/');
 }
 
 export function CompareEditDelete(

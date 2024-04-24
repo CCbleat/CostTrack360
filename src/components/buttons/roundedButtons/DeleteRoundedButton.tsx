@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import { Trash2 } from '@tamagui/lucide-icons'
 import { RoundedButton } from './RoundedButton';
 
-export function DeleteRoundedButton({onPressAction} : {onPressAction: () => void}) {
+export function DeleteRoundedButton({ onPressAction } : { onPressAction: () => void }) {
   return (
     <RoundedButton
         position={styles.buttonPosition}

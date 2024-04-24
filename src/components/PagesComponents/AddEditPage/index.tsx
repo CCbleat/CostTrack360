@@ -10,6 +10,7 @@ import TopHeadingText from '../../texts/TopHeadingText';
 import AddNewProductInputLine from '../../PagesComponents/AddEditPage/AddNewProductInputLine';
 import { addNewProduct, deleteProduct, getAllProducts, getSelectedProductName, storeSelectedProductName } from '../../../tools/SecureStore';
 import type { newProduct } from '../../../types/NewProductT';
+import { showToast } from '../../toasts/OperationStatusIndicator';
 
 export default function AddEditPage({ isEditPage }: { isEditPage: boolean }) {
     const [productName, setProductName] = useState<string>(''); // 产品名
@@ -45,6 +46,7 @@ export default function AddEditPage({ isEditPage }: { isEditPage: boolean }) {
         }
         addNewProduct(newProduct);
         router.push('/');
+        showToast('产品添加成功');
     }
     
     const getSelectedProduct = (selectedProductName: string) : newProduct  => {
@@ -74,6 +76,7 @@ export default function AddEditPage({ isEditPage }: { isEditPage: boolean }) {
         cleanSelectedProductName();
         // Jump to homePage
         router.push('/');
+        showToast('产品编辑成功');
     }
 
     const initializeProductProperties = () => {

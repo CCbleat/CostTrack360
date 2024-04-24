@@ -11,8 +11,6 @@ import { router } from 'expo-router';
 import { getAllProducts, getSelectedProductsNameList, storeSelectedProductsNameList } from '../src/tools/SecureStore';
 import { newProduct } from '../src/types/NewProductT';
 
-
-
 echarts.use([ SVGRenderer, LineChart, GridComponent, LegendComponent ]);
 
 export default function lineChartPage() {

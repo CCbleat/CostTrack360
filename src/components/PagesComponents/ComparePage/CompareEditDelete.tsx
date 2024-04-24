@@ -4,6 +4,7 @@ import { CompareButton } from '../../buttons/rectangularButtons/CompareButton';
 import { DeleteRoundedButton, EditRoundedButton } from '../../buttons/roundedButtons/index';
 import { deleteProduct, storeSelectedProductName, storeSelectedProductsNameList } from '../../../tools/SecureStore';
 import { router } from 'expo-router';
+import { showToast } from '../../toasts/OperationStatusIndicator';
 
 // delete selected products
 const onPressDeleteBtnAction = (selectedProductsNameList: string[]) => {
@@ -13,6 +14,7 @@ const onPressDeleteBtnAction = (selectedProductsNameList: string[]) => {
   })
   // refresh the page
   router.push('/');
+  showToast('产品删除成功');
 }
 
 export function CompareEditDelete(
